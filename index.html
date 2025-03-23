@@ -1,23 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BeatBana</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="logo">Navigation Bar</div>
-        <div class="hamburger" id="hamburger">
-            <img src="icons8-hamburger-menu-50.png" alt="hamburger">
-        </div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-</body>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <div class="main-container">
+        <div class="header">
+            <header class="header-content">
+              <a href="#logo" class="logo">
+                <img src="Beat Bana.png" alt="logo" class="logo-icon" />
+                <span class="logo-text">BeatBana</span>
+              </a>
+              <nav class="nav">
+                <a href="#log-in" class="nav-link" id="login-button">Log in</a>
+                <a href="#sign-up" class="nav-link" id="signup-button">Sign up</a>
+              </nav>
+            </header>
+          </div>
+      
+          <div class="content">
+            <section class="main-section">
+              <div class="text-contents">
+                <h1 class="section-title">Create Beats with Ease</h1>
+                <p class="section-description">
+                  BeatBana is a user-friendly beat-making platform where beginners can
+                  create amazing music using intuitive tools and pre-designed
+                  templates.
+                </p>
+              </div>
+              <div class="button-group">
+                <a href="#start" class="start-button">Get Started</a>
+                <a href="#templetes" class="templetes-button">Explore Templates</a>
+              </div>
+            </section>
+          </div>
+      
+          <div class="feature-container">
+            <div class="feature-grid">
+              <h1 class="feature-heading">How it works</h1>
+              <!-- card 1 -->
+              <div class="feature-card">
+                <div class="feature-numbers">1</div>
+                <div class="feature-info">
+                  <div class="feature-title">Choose a Template</div>
+                  <div class="feature-description">
+                    Browse our library of professionally designed beat templates
+                    across various genres.
+                  </div>
+                </div>
+              </div>
+              <!-- card 2 -->
+              <div class="feature-card">
+                <div class="feature-numbers">2</div>
+                <div class="feature-info">
+                  <div class="feature-title">Customize Your Beat</div>
+                  <div class="feature-description">
+                    Drag and drop sounds, adjust tempo, and add effects to make the
+                    beat your own.
+                  </div>
+                </div>
+              </div>
+              <!-- card 3 -->
+              <div class="feature-card">
+                <div class="feature-numbers">3</div>
+                <div class="feature-info">
+                  <div class="feature-title">Share & Export</div>
+                  <div class="feature-description">
+                    Share your creation with the community or export it in
+                    high-quality audio formats
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Add to index.html -->
+          <div class="modal" id="auth-modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Welcome to BeatBana</h2>
+              <form id="auth-form">
+                <input type="email" placeholder="Email" required />
+                <input type="password" placeholder="Password" required />
+                <button type="submit">Continue</button>
+              </form>
+            </div>
+          </div>
+      
+          <div class="join-container">
+            <div class="join-content">
+              <div class="join-text">Join Thousands of Beat Makers</div>
+              <div class="join-button-container">
+                <button type="button" class="join-button">
+                  Create Your First Beat
+                </button>
+              </div>
+            </div>
+          </div>
+      
+          <div class="footer-container">
+            <footer class="footer">
+              <div class="footer-top">
+                <div class="comp-logo">
+                  <a href="#logo" class="logo-link">
+                    <img class="logo-svg" src="Beat Bana.png" alt="company logo" />
+                  </a>
+                </div>
+                <span class="logo-footer-text"> BeatBana </span>
+              </div>
+            </footer>
+            <div class="footer-copyright">© 2025 BeatBana. All rights reserved.</div>
+          </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
