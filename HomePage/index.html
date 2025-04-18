@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BeatBana - Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+      :root {
+        --primary: #6c4bff;
+        --primary-dark: #5135e0;
+        --secondary: #ff4b8c;
+        --dark: #121212;
+        --gray: #2a2a2a;
+        --light-gray: #3a3a3a;
+        --lighter-gray: #555555;
+        --text: #ffffff;
+        --text-secondary: #b0b0b0;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", "Roboto", sans-serif;
+        background-color: var(--dark);
+        color: var(--text);
+        font-size: 16px;
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      button,
+      .button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Header */
+      .header {
+        background-color: var(--gray);
+        padding: 10px 0;
+        border-bottom: 1px solid var(--light-gray);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo-icon {
+        height: 30px;
+        width: auto;
+      }
+
+      .logo-text {
+        font-size: 18px;
+        font-weight: 700;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .notification-icon {
+        color: var(--text-secondary);
+        font-size: 20px;
+      }
+
+      /* Feed Selection */
+      .feed-selection {
+        padding: 15px 0;
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .feed-selection::-webkit-scrollbar {
+        display: none;
+      }
+
+      .feed-button {
+        padding: 8px 16px;
+        background-color: transparent;
+        border: 1px solid var(--light-gray);
+        border-radius: 50px;
+        color: var(--text);
+        font-size: 14px;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+      }
+
+      .feed-button.active {
+        background-color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      .feed-button:hover {
+        background-color: var(--light-gray);
+        border-color: var(--light-gray);
+      }
+
+      /* Search */
+      .search-container {
+        padding: 10px 0;
+        position: relative;
+        margin-bottom: 15px;
+      }
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        border: 1px solid var(--light-gray);
+        border-radius: 50px;
+        padding: 5px 15px;
+        background-color: var(--gray);
+      }
+
+      .profile-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: var(--light-gray);
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .profile-avatar .avatar-icon {
+        font-size: 18px;
+        color: var(--text);
+      }
+
+      .search-input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        color: var(--text);
+        padding: 8px 0;
+        font-size: 14px;
+        outline: none;
+      }
+
+      .search-input::placeholder {
+        color: var(--text-secondary);
+      }
+
+      /* Trending Section */
+      .section-header {
+        margin-bottom: 15px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .trending-carousel {
+        position: relative;
+        margin-bottom: 30px;
+      }
+
+      .carousel-container {
+        display: flex;
+        gap: 15px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        margin: 0 -10px;
+      }
+
+      .carousel-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      .carousel-item {
+        min-width: 150px;
+        height: 200px;
+        border-radius: 10px;
+        border: 1px solid var(--light-gray);
+        background-color: var(--gray);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .carousel-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .carousel-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--text);
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      .carousel-prev {
+        left: -15px;
+      }
+
+      .carousel-next {
+        right: -15px;
+      }
+
+      /* Feed Content */
+      .feed-content {
+        margin-bottom: 70px;
+      }
+
+      .post {
+        border: 1px solid var(--light-gray);
+        border-radius: 10px;
+        margin-bottom: 20px;
+        background-color: var(--gray);
+        overflow: hidden;
+      }
+
+      .post-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+      }
+
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .user-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: var(--light-gray);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .user-avatar .avatar-icon {
+        display: none;
+      }
+
+      .user-avatar .avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .user-name {
+        font-weight: 600;
+        line-height: 1.2;
+      }
+
+      .user-handle {
+        font-size: 12px;
+        color: var(--text-secondary);
+      }
+
+      .follow-button {
+        padding: 6px 15px;
+        border-radius: 50px;
+        background-color: var(--light-gray);
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .follow-button:hover {
+        background-color: var(--lighter-gray);
+      }
+
+      .post-options {
+        color: var(--text-secondary);
+        font-size: 20px;
+      }
+
+      .post-caption {
+        padding: 10px 15px;
+        font-size: 16px;
+        color: var(--text);
+        background-color: var(--gray);
+        line-height: 1.4;
+      }
+
+      .post-media {
+        background-color: var(--dark);
+        padding: 10px 15px;
+        text-align: center;
+      }
+
+      .post-media img,
+      .post-media video {
+        max-width: 100%;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .post-content {
+        min-height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-color: var(--dark);
+        color: var(--text-secondary);
+        font-size: 18px;
+        text-align: center;
+      }
+
+      .post-actions {
+        display: flex;
+        padding: 10px 15px;
+        border-top: 1px solid var(--light-gray);
+      }
+
+      .action-button {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 8px;
+        border-radius: 5px;
+        color: var(--text-secondary);
+        font-size: 14px;
+        margin-right: 15px;
+        transition: color 0.2s ease;
+      }
+
+      .action-button:hover {
+        color: var(--text);
+      }
+
+      .action-button i {
+        font-size: 16px;
+      }
+
+      .share-button {
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      /* Navigation */
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--gray);
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        border-top: 1px solid var(--light-gray);
+        z-index: 100;
+      }
+
+      .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-secondary);
+        transition: color 0.2s ease;
+      }
+
+      .nav-item:hover {
+        color: var(--text);
+      }
+
+      .nav-item i {
+        font-size: 20px;
+        margin-bottom: 3px;
+      }
+
+      .create-button {
+        background-color: var(--dark);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -15px;
+        border: 2px solid var(--primary);
+        font-size: 24px;
+        color: var(--primary);
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .create-button:hover {
+        background-color: var(--primary);
+        color: var(--text);
+        transform: scale(1.1);
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          padding: 0 30px;
+        }
+
+        .hero-buttons {
+          flex-direction: row;
+          justify-content: center;
+        }
+
+        .carousel-item {
+          min-width: 180px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="#" class="logo">
+            <img src="Beat Bana.png" alt="BeatBana Logo" class="logo-icon" />
+            <span class="logo-text">BeatBana</span>
+          </a>
+          <a href="#" class="notification-icon">
+            <i class="fas fa-bell"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="container">
+        <!-- Feed Selection -->
+        <div class="feed-selection">
+          <button class="feed-button active">Feed</button>
+          <button class="feed-button">Following</button>
+          <button class="feed-button">Trending</button>
+          <button class="feed-button">Music</button>
+          <button class="feed-button">Video</button>
+          <button class="feed-button">Communities</button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+          <div class="search-bar">
+            <div class="profile-avatar">
+              <i class="fas fa-user avatar-icon"></i>
+            </div>
+            <input type="text" class="search-input" placeholder="Search" />
+            <i class="fas fa-search" style="color: var(--text-secondary)"></i>
+          </div>
+        </div>
+
+        <!-- Trending Section -->
+        <div class="trending-section">
+          <h2 class="section-header">Trending</h2>
+
+          <div class="trending-carousel">
+            <div class="carousel-container">
+              <div class="carousel-item">
+                <img
+                  src="pexels-aleksandr-neplokhov-486399-1238976.jpg"
+                  alt="A guy with a DJ machine"
+                  loading="lazy"
+                />
+                <!-- <div class="carousel-label">Label</div> -->
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="pexels-kelvinernandi-3714523.jpg"
+                  alt="A Guitar"
+                  loading="lazy"
+                />
+                <!-- <div class="carousel-label">Label</div> -->
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="pexels-mart-production-8107191.jpg"
+                  alt="A guy with a DJ machine"
+                  loading="lazy"
+                />
+                <!-- <div class="carousel-label">Label</div> -->
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="pexels-tima-miroshnichenko-5118443.jpg"
+                  alt="A guy with a DJ machine"
+                  loading="lazy"
+                />
+                <!-- <div class="carousel-label">Label</div> -->
+              </div>
+            </div>
+
+            <div class="carousel-nav carousel-prev">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="carousel-nav carousel-next">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feed Content -->
+        <div class="feed-content">
+          <!-- Post -->
+          <div class="post">
+            <div class="post-header">
+              <div class="user-info">
+                <div class="user-avatar">
+                  <img
+                    src="96x96.jpg"
+                    alt="Avatar"
+                    class="avatar-img"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <div class="user-name">miss mercy</div>
+                  <div class="user-handle">@szaslover</div>
+                </div>
+              </div>
+              <div class="post-actions-top">
+                <button class="follow-button">Follow</button>
+                <span class="post-options">
+                  <i class="fas fa-ellipsis"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="post-caption">
+              Check out my new Lo-Fi beat! 
+            </div>
+
+            <div class="post-media">
+              <video
+                class="post-video"
+                muted
+                playinline
+                preload="metadata"
+                loop
+              >
+                <source
+                  src="4841885-uhd_2160_4096_25fps.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+            <div class="post-actions">
+              <button class="action-button">
+                <i class="far fa-heart"></i>
+                <span>469</span>
+              </button>
+              <button class="action-button">
+                <i class="far fa-comment"></i>
+                <span>218</span>
+              </button>
+              <button class="action-button share-button">
+                <i class="fas fa-share-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Post -->
+          <div class="post">
+            <div class="post-header">
+              <div class="user-info">
+                <div class="user-avatar">
+                  <img
+                    src="AvatarMaker.png"
+                    alt="Avatar"
+                    class="avatar-img"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <div class="user-name">BeatMaker</div>
+                  <div class="user-handle">@beatgenius</div>
+                </div>
+              </div>
+              <div class="post-actions-top">
+                <button class="follow-button">Follow</button>
+                <span class="post-options">
+                  <i class="fas fa-ellipsis"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="post-caption">
+              Some zazzy beats for your next project! 🎶
+            </div>
+
+            <div class="post-media">
+              <video
+                class="post-video"
+                muted
+                playinline
+                preload="metadata"
+                loop
+              >
+                <source
+                  src="6875758-uhd_2160_4096_25fps.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+            <div class="post-actions">
+              <button class="action-button">
+                <i class="far fa-heart"></i>
+                <span>325</span>
+              </button>
+              <button class="action-button">
+                <i class="far fa-comment"></i>
+                <span>42</span>
+              </button>
+              <button class="action-button share-button">
+                <i class="fas fa-share-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="#" class="nav-item">
+        <i class="fas fa-home"></i>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-search"></i>
+      </a>
+      <a href="../BeatMaker/index.html" class="create-button">
+        <i class="fas fa-music"></i>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-folder"></i>
+      </a>
+      <a href="../Profile/index.html" class="nav-item">
+        <i class="fas fa-user"></i>
+      </a>
+    </nav>
+
+    <script>
+      // Script for carousel functionality
+      $(document).ready(function () {
+        $(".carousel-next").click(function () {
+          $(".carousel-container").animate(
+            {
+              scrollLeft: "+=200",
+            },
+            300
+          );
+        });
+
+        $(".carousel-prev").click(function () {
+          $(".carousel-container").animate(
+            {
+              scrollLeft: "-=200",
+            },
+            300
+          );
+        });
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        const videos = document.querySelectorAll(".post-video");
+
+        // Create the observer, with a callback that plays/pauses
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const vid = entry.target;
+              if (entry.isIntersecting) {
+                vid.play();
+              } else {
+                vid.pause();
+              }
+            });
+          },
+          {
+            threshold: 0.5, // fire when 50% of the video is visible
+          }
+        );
+
+        // Observe each video
+        videos.forEach((video) => observer.observe(video));
+      });
+    </script>
+  </body>
+</html>

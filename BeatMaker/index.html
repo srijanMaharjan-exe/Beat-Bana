@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeatBana - Beat Maker</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="../index.html" class="logo">
+          <img src="../Images/Beat Bana.png" alt="BeatBana Logo" class="logo-icon" />
+          <span class="logo-text">BeatBana</span>
+        </a>
+        <div class="header-actions">
+          <button id="save-button" class="header-button">
+            <i class="fas fa-save"></i>
+          </button>
+          <button id="export-button" class="header-button">
+            <i class="fas fa-download"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Project Info -->
+      <div class="project-info">
+        <input type="text" id="project-name" placeholder="Untitled Beat" class="project-name">
+        <div class="project-meta">
+          <span id="bpm-display">120 BPM</span>
+          <span id="time-display">00:00</span>
+        </div>
+      </div>
+
+      <!-- Playback Controls -->
+      <div class="playback-controls">
+        <button id="play-button" class="control-button">
+          <i class="fas fa-play"></i>
+        </button>
+        <button id="stop-button" class="control-button">
+          <i class="fas fa-stop"></i>
+        </button>
+        <button id="loop-button" class="control-button">
+          <i class="fas fa-redo-alt"></i>
+        </button>
+        <button id="metronome-button" class="control-button">
+          <i class="fas fa-drum"></i>
+        </button>
+      </div>
+
+      <!-- Main Controls -->
+      <div class="main-controls">
+        <div class="control-group">
+          <label for="tempo-slider">Tempo</label>
+          <div class="slider-container">
+            <input type="range" id="tempo-slider" min="60" max="180" value="120" class="slider">
+            <div class="slider-value">120</div>
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="volume-slider">Volume</label>
+          <div class="slider-container">
+            <input type="range" id="volume-slider" min="0" max="100" value="80" class="slider">
+            <div class="slider-value">80</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sound Library Tabs -->
+      <div class="sound-library-tabs">
+        <button class="tab-button active" data-tab="drums">Drums</button>
+        <button class="tab-button" data-tab="bass">Bass</button>
+        <button class="tab-button" data-tab="melody">Melody</button>
+        <button class="tab-button" data-tab="fx">FX</button>
+      </div>
+
+      <!-- Sound Library -->
+      <div class="sound-library">
+        <div class="sound-category active" id="drums-tab">
+          <div class="sound-item" draggable="true" data-sound="kick">
+            <div class="sound-icon"><i class="fas fa-drum"></i></div>
+            <div class="sound-name">Kick</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+          <div class="sound-item" draggable="true" data-sound="snare">
+            <div class="sound-icon"><i class="fas fa-drum"></i></div>
+            <div class="sound-name">Snare</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+          <div class="sound-item" draggable="true" data-sound="hihat">
+            <div class="sound-icon"><i class="fas fa-drum"></i></div>
+            <div class="sound-name">Hi-Hat</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+          <div class="sound-item" draggable="true" data-sound="clap">
+            <div class="sound-icon"><i class="fas fa-drum"></i></div>
+            <div class="sound-name">Clap</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+        </div>
+        
+        <div class="sound-category" id="bass-tab">
+          <div class="sound-item" draggable="true" data-sound="bass1">
+            <div class="sound-icon"><i class="fas fa-guitar"></i></div>
+            <div class="sound-name">Deep Bass</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+          <div class="sound-item" draggable="true" data-sound="bass2">
+            <div class="sound-icon"><i class="fas fa-guitar"></i></div>
+            <div class="sound-name">808 Bass</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+          <div class="sound-item" draggable="true" data-sound="bass3">
+            <div class="sound-icon"><i class="fas fa-guitar"></i></div>
+            <div class="sound-name">Synth Bass</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+        </div>
+        
+        <div class="sound-category" id="melody-tab">
+          <div class="sound-item" draggable="true" data-sound="piano">
+            <div class="sound-icon"><i class="fas fa-music"></i></div>
+            <div class="sound-name">Piano</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+          <div class="sound-item" draggable="true" data-sound="synth">
+            <div class="sound-icon"><i class="fas fa-music"></i></div>
+            <div class="sound-name">Synth Lead</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+          <div class="sound-item" draggable="true" data-sound="strings">
+            <div class="sound-icon"><i class="fas fa-music"></i></div>
+            <div class="sound-name">Strings</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+        </div>
+        
+        <div class="sound-category" id="fx-tab">
+          <div class="sound-item" draggable="true" data-sound="riser">
+            <div class="sound-icon"><i class="fas fa-volume-up"></i></div>
+            <div class="sound-name">Riser</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+          <div class="sound-item" draggable="true" data-sound="impact">
+            <div class="sound-icon"><i class="fas fa-volume-up"></i></div>
+            <div class="sound-name">Impact</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+          <div class="sound-item" draggable="true" data-sound="sweep">
+            <div class="sound-icon"><i class="fas fa-volume-up"></i></div>
+            <div class="sound-name">Sweep</div>
+            <button class="preview-button"><i class="fas fa-play"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Section -->
+      <div class="timeline-section">
+        <div class="timeline-header">
+          <h3>Timeline</h3>
+          <div class="timeline-actions">
+            <button id="add-track-button" class="small-button">
+              <i class="fas fa-plus"></i> Add Track
+            </button>
+            <button id="clear-all-button" class="small-button">
+              <i class="fas fa-trash"></i> Clear
+            </button>
+          </div>
+        </div>
+        
+        <div class="timeline-container">
+          <div class="track-labels">
+            <div class="track-label">
+              <span>Drums</span>
+              <div class="track-controls">
+                <button class="track-mute"><i class="fas fa-volume-mute"></i></button>
+                <button class="track-solo">S</button>
+              </div>
+            </div>
+            <div class="track-label">
+              <span>Bass</span>
+              <div class="track-controls">
+                <button class="track-mute"><i class="fas fa-volume-mute"></i></button>
+                <button class="track-solo">S</button>
+              </div>
+            </div>
+            <div class="track-label">
+              <span>Melody</span>
+              <div class="track-controls">
+                <button class="track-mute"><i class="fas fa-volume-mute"></i></button>
+                <button class="track-solo">S</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="timeline-grid">
+            <div class="beat-markers">
+              <div class="beat-marker">1</div>
+              <div class="beat-marker">2</div>
+              <div class="beat-marker">3</div>
+              <div class="beat-marker">4</div>
+              <div class="beat-marker">5</div>
+              <div class="beat-marker">6</div>
+              <div class="beat-marker">7</div>
+              <div class="beat-marker">8</div>
+            </div>
+            
+            <div class="timeline-tracks">
+              <div class="timeline-track" id="drums-track">
+                <div class="timeline-cells">
+                  <div class="timeline-cell" data-beat="1"></div>
+                  <div class="timeline-cell" data-beat="2"></div>
+                  <div class="timeline-cell" data-beat="3"></div>
+                  <div class="timeline-cell" data-beat="4"></div>
+                  <div class="timeline-cell" data-beat="5"></div>
+                  <div class="timeline-cell" data-beat="6"></div>
+                  <div class="timeline-cell" data-beat="7"></div>
+                  <div class="timeline-cell" data-beat="8"></div>
+                </div>
+              </div>
+              
+              <div class="timeline-track" id="bass-track">
+                <div class="timeline-cells">
+                  <div class="timeline-cell" data-beat="1"></div>
+                  <div class="timeline-cell" data-beat="2"></div>
+                  <div class="timeline-cell" data-beat="3"></div>
+                  <div class="timeline-cell" data-beat="4"></div>
+                  <div class="timeline-cell" data-beat="5"></div>
+                  <div class="timeline-cell" data-beat="6"></div>
+                  <div class="timeline-cell" data-beat="7"></div>
+                  <div class="timeline-cell" data-beat="8"></div>
+                </div>
+              </div>
+              
+              <div class="timeline-track" id="melody-track">
+                <div class="timeline-cells">
+                  <div class="timeline-cell" data-beat="1"></div>
+                  <div class="timeline-cell" data-beat="2"></div>
+                  <div class="timeline-cell" data-beat="3"></div>
+                  <div class="timeline-cell" data-beat="4"></div>
+                  <div class="timeline-cell" data-beat="5"></div>
+                  <div class="timeline-cell" data-beat="6"></div>
+                  <div class="timeline-cell" data-beat="7"></div>
+                  <div class="timeline-cell" data-beat="8"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Effects Panel (Initially Hidden) -->
+      <div class="effects-panel" id="effects-panel">
+        <div class="effects-header">
+          <h3>Effects</h3>
+          <button id="close-effects" class="small-button">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="effects-controls">
+          <div class="effect-control">
+            <label for="reverb-slider">Reverb</label>
+            <div class="slider-container">
+              <input type="range" id="reverb-slider" min="0" max="100" value="0" class="slider">
+              <div class="slider-value">0</div>
+            </div>
+          </div>
+          
+          <div class="effect-control">
+            <label for="delay-slider">Delay</label>
+            <div class="slider-container">
+              <input type="range" id="delay-slider" min="0" max="100" value="0" class="slider">
+              <div class="slider-value">0</div>
+            </div>
+          </div>
+          
+          <div class="effect-control">
+            <label for="filter-slider">Filter</label>
+            <div class="slider-container">
+              <input type="range" id="filter-slider" min="0" max="100" value="50" class="slider">
+              <div class="slider-value">50</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tutorial Overlay (Initially Hidden) -->
+      <div class="tutorial-overlay" id="tutorial-overlay">
+        <div class="tutorial-content">
+          <h2>Welcome to BeatBana!</h2>
+          <p>Let's create your first beat in 3 simple steps:</p>
+          
+          <div class="tutorial-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Choose Sounds</h3>
+              <p>Browse through our sound library and drag sounds to the timeline.</p>
+            </div>
+          </div>
+          
+          <div class="tutorial-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Arrange Your Beat</h3>
+              <p>Click on timeline cells to place sounds at specific beats.</p>
+            </div>
+          </div>
+          
+          <div class="tutorial-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Play & Customize</h3>
+              <p>Hit play to hear your beat, then adjust tempo and effects to make it your own!</p>
+            </div>
+          </div>
+          
+          <button id="start-creating" class="primary-button">Start Creating</button>
+          <div class="tutorial-skip">
+            <label>
+              <input type="checkbox" id="dont-show-again"> Don't show this again
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Help Button -->
+      <button id="help-button" class="floating-button">
+        <i class="fas fa-question"></i>
+      </button>
+
+      <!-- Effects Button -->
+      <button id="effects-button" class="floating-button effects-toggle">
+        <i class="fas fa-sliders-h"></i>
+      </button>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="../index.html" class="nav-item">
+      <i class="fas fa-home"></i>
+    </a>
+    <a href="#" class="nav-item">
+      <i class="fas fa-search"></i>
+    </a>
+    <a href="#" class="create-button active">
+      <i class="fas fa-music"></i>
+    </a>
+    <a href="#" class="nav-item">
+      <i class="fas fa-folder"></i>
+    </a>
+    <a href="#" class="nav-item">
+      <i class="fas fa-user"></i>
+    </a>
+  </nav>
+
+  <!-- Save Modal (Initially Hidden) -->
+  <div class="modal" id="save-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Save Your Beat</h3>
+        <button class="modal-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="save-name">Beat Name</label>
+          <input type="text" id="save-name" placeholder="My Awesome Beat">
+        </div>
+        <div class="form-group">
+          <label for="save-genre">Genre</label>
+          <select id="save-genre">
+            <option value="hip-hop">Hip Hop</option>
+            <option value="edm">EDM</option>
+            <option value="pop">Pop</option>
+            <option value="lofi">Lo-Fi</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="save-description">Description (Optional)</label>
+          <textarea id="save-description" placeholder="Describe your beat..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="secondary-button modal-cancel">Cancel</button>
+        <button class="primary-button modal-save">Save Beat</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Export Modal (Initially Hidden) -->
+  <div class="modal" id="export-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Export Your Beat</h3>
+        <button class="modal-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Export Format</label>
+          <div class="export-options">
+            <label class="export-option">
+              <input type="radio" name="export-format" value="mp3" checked>
+              <span class="option-label">MP3</span>
+              <span class="option-desc">Standard quality, smaller file size</span>
+            </label>
+            <label class="export-option">
+              <input type="radio" name="export-format" value="wav">
+              <span class="option-label">WAV</span>
+              <span class="option-desc">High quality, larger file size</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Quality</label>
+          <div class="slider-container">
+            <input type="range" id="quality-slider" min="0" max="2" value="1" step="1" class="slider">
+            <div class="quality-labels">
+              <span>Low</span>
+              <span>Medium</span>
+              <span>High</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="secondary-button modal-cancel">Cancel</button>
+        <button class="primary-button modal-export">Export</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

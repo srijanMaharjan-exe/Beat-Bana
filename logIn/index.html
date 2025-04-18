@@ -298,7 +298,27 @@
         padding: 0 40px;
       }
     }
-  </style>
+
+  .error-message {
+    color: #f44336;
+    font-size: 0.85rem;
+    margin-top: 5px;
+  }
+  
+  .input-error {
+    border-color: #f44336 !important;
+  }
+  
+  /* Add loading spinner animation */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .fa-spin {
+    animation: spin 1s linear infinite;
+  }
+</style>
 </head>
 <body>
   <!-- Header -->
@@ -306,7 +326,7 @@
     <div class="container">
       <div class="header-content">
         <a href="../index.html" class="logo">
-          <img src="../Beat Bana.png" alt="BeatBana Logo" class="logo-icon" />
+          <img src="Beat Bana.png" alt="BeatBana Logo" class="logo-icon" />
           <span class="logo-text">BeatBana</span>
         </a>
       </div>
@@ -377,5 +397,69 @@
       </div>
     </div>
   </footer>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.querySelector('.login-form');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Simple validation
+      let isValid = true;
+      
+      if (!emailInput.value || !emailInput.value.includes('@')) {
+        showError(emailInput, 'Please enter a valid email address');
+        isValid = false;
+      } else {
+        clearError(emailInput);
+      }
+      
+      if (!passwordInput.value || passwordInput.value.length < 6) {
+        showError(passwordInput, 'Password must be at least 6 characters');
+        isValid = false;
+      } else {
+        clearError(passwordInput);
+      }
+      
+      if (isValid) {
+        // Show loading state
+        const submitButton = loginForm.querySelector('button[type="submit"]');
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+        submitButton.disabled = true;
+        
+        // Simulate login (would be replaced with actual API call)
+        setTimeout(() => {
+          window.location.href = '../HomePage/index.html';
+        }, 1500);
+      }
+    });
+    
+    function showError(input, message) {
+      const formGroup = input.closest('.form-group');
+      const errorElement = formGroup.querySelector('.error-message') || document.createElement('div');
+      
+      if (!formGroup.querySelector('.error-message')) {
+        errorElement.className = 'error-message';
+        formGroup.appendChild(errorElement);
+      }
+      
+      errorElement.textContent = message;
+      input.classList.add('input-error');
+    }
+    
+    function clearError(input) {
+      const formGroup = input.closest('.form-group');
+      const errorElement = formGroup.querySelector('.error-message');
+      
+      if (errorElement) {
+        errorElement.textContent = '';
+      }
+      
+      input.classList.remove('input-error');
+    }
+  });
+</script>
 </body>
 </html>

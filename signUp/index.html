@@ -16,6 +16,7 @@
       --light-gray: #3a3a3a;
       --text: #ffffff;
       --text-secondary: #b0b0b0;
+      --error: #f44336;
     }
     
     * {
@@ -102,7 +103,7 @@
       background-color: var(--gray);
       border-radius: 12px;
       width: 100%;
-      max-width: 450px;
+      max-width: 400px;
       padding: 30px;
       border: 1px solid var(--light-gray);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
@@ -132,16 +133,10 @@
       gap: 20px;
     }
     
-    .form-row {
-      display: flex;
-      gap: 15px;
-    }
-    
     .form-group {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      flex: 1;
     }
     
     .form-label {
@@ -164,33 +159,32 @@
       outline: none;
     }
     
-    .form-terms {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
+    .form-input.input-error {
+      border-color: var(--error);
+    }
+    
+    .error-message {
+      color: var(--error);
       font-size: 0.85rem;
+      margin-top: 5px;
+    }
+    
+    .form-options {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       color: var(--text-secondary);
+      font-size: 0.85rem;
     }
     
     .terms-checkbox {
       width: 16px;
       height: 16px;
-      margin-top: 3px;
       accent-color: var(--primary);
     }
     
-    .terms-text a {
-      color: var(--primary);
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-    
-    .terms-text a:hover {
-      color: var(--secondary);
-    }
-    
     .signup-button {
-      background-color: var(--secondary);
+      background-color: var(--primary);
       color: white;
       padding: 14px;
       border-radius: 8px;
@@ -201,7 +195,12 @@
     }
     
     .signup-button:hover {
-      background-color: #e63573;
+      background-color: var(--primary-dark);
+    }
+    
+    .signup-button:disabled {
+      background-color: var(--light-gray);
+      cursor: not-allowed;
     }
     
     .divider {
@@ -268,31 +267,34 @@
       color: var(--secondary);
     }
     
-    /* Features Preview */
-    .features-preview {
-      display: flex;
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid var(--light-gray);
-      justify-content: space-between;
+    /* Password Strength Meter */
+    .password-strength {
+      margin-top: 8px;
     }
     
-    .feature-item {
+    .strength-meter {
+      height: 4px;
+      background-color: var(--dark);
+      border-radius: 2px;
+      margin-bottom: 5px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    }
+    
+    .strength-segment {
+      height: 100%;
       flex: 1;
+      margin-right: 2px;
+      border-radius: 2px;
+      background-color: var(--dark);
+      transition: background-color 0.3s ease;
     }
     
-    .feature-icon {
-      font-size: 1.5rem;
-      color: var(--secondary);
-      margin-bottom: 8px;
+    .strength-segment:last-child {
+      margin-right: 0;
     }
     
-    .feature-text {
-      font-size: 0.8rem;
+    .strength-text {
+      font-size: 0.75rem;
       color: var(--text-secondary);
     }
     
@@ -321,19 +323,17 @@
       color: var(--text);
     }
     
-    /* Responsive */
-    @media (max-width: 576px) {
-      .form-row {
-        flex-direction: column;
-        gap: 20px;
-      }
-      
-      .features-preview {
-        flex-direction: column;
-        gap: 20px;
-      }
+    /* Loading Spinner */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
     
+    .fa-spin {
+      animation: spin 1s linear infinite;
+    }
+    
+    /* Responsive */
     @media (min-width: 768px) {
       .container {
         padding: 0 40px;
@@ -347,7 +347,7 @@
     <div class="container">
       <div class="header-content">
         <a href="../index.html" class="logo">
-          <img src="../Beat Bana.png" alt="BeatBana Logo" class="logo-icon" />
+          <img src="../Images/Beat Bana.png" alt="BeatBana Logo" class="logo-icon" />
           <span class="logo-text">BeatBana</span>
         </a>
       </div>
@@ -359,21 +359,14 @@
     <div class="container">
       <div class="signup-container">
         <div class="signup-header">
-          <h1 class="signup-title">Create Your Account</h1>
-          <p class="signup-subtitle">Start your beat-making journey today</p>
+          <h1 class="signup-title">Create Account</h1>
+          <p class="signup-subtitle">Join the BeatBana community</p>
         </div>
         
-        <form class="signup-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="first-name" class="form-label">First Name</label>
-              <input type="text" id="first-name" class="form-input" placeholder="Enter first name" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="last-name" class="form-label">Last Name</label>
-              <input type="text" id="last-name" class="form-input" placeholder="Enter last name" required>
-            </div>
+        <form class="signup-form" id="signup-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" class="form-input" placeholder="Enter your name" required>
           </div>
           
           <div class="form-group">
@@ -383,14 +376,27 @@
           
           <div class="form-group">
             <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" class="form-input" placeholder="Create a strong password" required>
+            <input type="password" id="password" class="form-input" placeholder="Create a password" required>
+            
+            <div class="password-strength">
+              <div class="strength-meter">
+                <div class="strength-segment"></div>
+                <div class="strength-segment"></div>
+                <div class="strength-segment"></div>
+                <div class="strength-segment"></div>
+              </div>
+              <div class="strength-text">Password strength: Too weak</div>
+            </div>
           </div>
           
-          <div class="form-terms">
+          <div class="form-group">
+            <label for="confirm-password" class="form-label">Confirm Password</label>
+            <input type="password" id="confirm-password" class="form-input" placeholder="Confirm your password" required>
+          </div>
+          
+          <div class="form-options">
             <input type="checkbox" id="terms" class="terms-checkbox" required>
-            <div class="terms-text">
-              I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I also agree to receive product updates and newsletters, which I can unsubscribe from anytime.
-            </div>
+            <label for="terms">I agree to the <a href="#" style="color: var(--primary);">Terms of Service</a> and <a href="#" style="color: var(--primary);">Privacy Policy</a></label>
           </div>
           
           <button type="submit" class="signup-button">Create Account</button>
@@ -413,29 +419,6 @@
         <div class="login-link">
           Already have an account? <a href="../logIn/index.html">Log in</a>
         </div>
-        
-        <div class="features-preview">
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-headphones"></i>
-            </div>
-            <div class="feature-text">Access to 1000+ sound samples</div>
-          </div>
-          
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-cloud-upload-alt"></i>
-            </div>
-            <div class="feature-text">Cloud storage for your beats</div>
-          </div>
-          
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="feature-text">Join community of creators</div>
-          </div>
-        </div>
       </div>
     </div>
   </main>
@@ -451,5 +434,180 @@
       </div>
     </div>
   </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const signupForm = document.getElementById('signup-form');
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirm-password');
+      const termsCheckbox = document.getElementById('terms');
+      const strengthSegments = document.querySelectorAll('.strength-segment');
+      const strengthText = document.querySelector('.strength-text');
+      
+      // Password strength checker
+      passwordInput.addEventListener('input', () => {
+        const password = passwordInput.value;
+        let strength = 0;
+        
+        // Length check
+        if (password.length >= 8) {
+          strength += 1;
+        }
+        
+        // Uppercase check
+        if (/[A-Z]/.test(password)) {
+          strength += 1;
+        }
+        
+        // Number check
+        if (/[0-9]/.test(password)) {
+          strength += 1;
+        }
+        
+        // Special character check
+        if (/[^A-Za-z0-9]/.test(password)) {
+          strength += 1;
+        }
+        
+        // Update strength meter
+        strengthSegments.forEach((segment, index) => {
+          if (index < strength) {
+            segment.style.backgroundColor = getStrengthColor(strength);
+          } else {
+            segment.style.backgroundColor = 'var(--dark)';
+          }
+        });
+        
+        // Update strength text
+        strengthText.textContent = `Password strength: ${getStrengthText(strength)}`;
+        strengthText.style.color = getStrengthColor(strength);
+      });
+      
+      // Form submission
+      signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Validate form
+        let isValid = true;
+        
+        if (!nameInput.value.trim()) {
+          showError(nameInput, 'Please enter your name');
+          isValid = false;
+        } else {
+          clearError(nameInput);
+        }
+        
+        if (!emailInput.value || !isValidEmail(emailInput.value)) {
+          showError(emailInput, 'Please enter a valid email address');
+          isValid = false;
+        } else {
+          clearError(emailInput);
+        }
+        
+        if (!passwordInput.value || passwordInput.value.length < 8) {
+          showError(passwordInput, 'Password must be at least 8 characters');
+          isValid = false;
+        } else {
+          clearError(passwordInput);
+        }
+        
+        if (passwordInput.value !== confirmPasswordInput.value) {
+          showError(confirmPasswordInput, 'Passwords do not match');
+          isValid = false;
+        } else {
+          clearError(confirmPasswordInput);
+        }
+        
+        if (!termsCheckbox.checked) {
+          showError(termsCheckbox, 'You must agree to the Terms of Service');
+          isValid = false;
+        } else {
+          clearError(termsCheckbox);
+        }
+        
+        if (isValid) {
+          // Show loading state
+          const submitButton = signupForm.querySelector('button[type="submit"]');
+          submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+          submitButton.disabled = true;
+          
+          // Simulate account creation (would be replaced with actual API call)
+          setTimeout(() => {
+            window.location.href = '../HomePage/index.html';
+          }, 2000);
+        }
+      });
+      
+      // Helper functions
+      function showError(input, message) {
+        const formGroup = input.closest('.form-group') || input.parentElement;
+        const errorElement = formGroup.querySelector('.error-message') || document.createElement('div');
+        
+        if (!formGroup.querySelector('.error-message')) {
+          errorElement.className = 'error-message';
+          formGroup.appendChild(errorElement);
+        }
+        
+        errorElement.textContent = message;
+        if (input.classList) {
+          input.classList.add('input-error');
+        }
+      }
+      
+      function clearError(input) {
+        const formGroup = input.closest('.form-group') || input.parentElement;
+        const errorElement = formGroup.querySelector('.error-message');
+        
+        if (errorElement) {
+          errorElement.textContent = '';
+        }
+        
+        if (input.classList) {
+          input.classList.remove('input-error');
+        }
+      }
+      
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+      
+      function getStrengthColor(strength) {
+        switch (strength) {
+          case 0:
+            return '#f44336'; // Red
+          case 1:
+            return '#ff9800'; // Orange
+          case 2:
+            return '#ffeb3b'; // Yellow
+          case 3:
+            return '#4caf50'; // Light green
+          case 4:
+            return '#2e7d32'; // Dark green
+          default:
+            return '#f44336'; // Red
+        }
+      }
+      
+      function getStrengthText(strength) {
+        switch (strength) {
+          case 0:
+            return 'Too weak';
+          case 1:
+            return 'Weak';
+          case 2:
+            return 'Medium';
+          case 3:
+            return 'Strong';
+          case 4:
+            return 'Very strong';
+          default:
+            return 'Too weak';
+        }
+      }
+    });
+  </script>
 </body>
 </html>

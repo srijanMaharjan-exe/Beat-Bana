@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeatBana - User Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo">
+          <img src="../Images/Beat Bana.png" alt="BeatBana Logo" class="logo-icon" />
+          <span class="logo-text">BeatBana</span>
+        </a>
+        <div class="header-actions">
+          <a href="#" class="notification-icon">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">3</span>
+          </a>
+          <div class="user-menu-container">
+            <button class="user-menu-trigger">
+              <img src="IMG_2669.JPG" alt="User Avatar" class="user-avatar-small">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="user-menu">
+              <a href="index.html" class="user-menu-item active">
+                <i class="fas fa-user"></i> Profile
+              </a>
+              <a href="#" class="user-menu-item">
+                <i class="fas fa-cog"></i> Settings
+              </a>
+              <a href="#" class="user-menu-item">
+                <i class="fas fa-question-circle"></i> Help
+              </a>
+              <div class="menu-divider"></div>
+              <a href="../index.html" class="user-menu-item">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Profile Header -->
+      <div class="profile-header">
+        <div class="profile-cover">
+          <img src="IMG_5202.JPG" alt="Profile Cover" class="cover-image">
+          <button class="edit-cover-btn">
+            <i class="fas fa-camera"></i>
+          </button>
+        </div>
+        <div class="profile-info">
+          <div class="profile-avatar-container">
+            <img src="IMG_2669.JPG" alt="User Avatar" class="profile-avatar">
+            <button class="edit-avatar-btn">
+              <i class="fas fa-camera"></i>
+            </button>
+          </div>
+          <div class="profile-details">
+            <h1 class="profile-name">Srijan Maharjan</h1>
+            <p class="profile-username">@theOGbeatmaster</p>
+            <div class="profile-stats">
+              <div class="stat-item">
+                <span class="stat-value">42</span>
+                <span class="stat-label">Beats</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">1.2k</span>
+                <span class="stat-label">Followers</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">384</span>
+                <span class="stat-label">Following</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Navigation -->
+      <div class="profile-nav">
+        <button class="profile-nav-item active" data-tab="overview">Overview</button>
+        <button class="profile-nav-item" data-tab="beats">My Beats</button>
+        <button class="profile-nav-item" data-tab="collections">Collections</button>
+        <button class="profile-nav-item" data-tab="edit-profile">Edit Profile</button>
+      </div>
+
+      <!-- Profile Content -->
+      <div class="profile-content">
+        <!-- Overview Tab -->
+        <div class="profile-tab active" id="overview-tab">
+          <div class="profile-section">
+            <h2 class="section-title">About Me</h2>
+            <p class="about-text">
+              Music producer and beat maker based in Los Angeles. Specializing in Lo-Fi, Hip Hop, and Electronic music. 
+              Creating beats since 2018 and always looking to collaborate with talented artists.
+            </p>
+          </div>
+
+          <div class="profile-section">
+            <div class="section-header">
+              <h2 class="section-title">Recent Activity</h2>
+              <a href="#" class="section-link">View All</a>
+            </div>
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-music"></i>
+                </div>
+                <div class="activity-content">
+                  <p class="activity-text">You created a new beat <a href="https://youtu.be/t5Q30GGiXiE?si=Nw_Jy-7IeztUi9pl" target="_blank">"Jump"</a></p>
+                  <p class="activity-time">2 hours ago</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <div class="activity-content">
+                  <p class="activity-text">You liked <a href="#">"Midnight Groove"</a> by <a href="#">@nightproducer</a></p>
+                  <p class="activity-time">Yesterday</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-comment"></i>
+                </div>
+                <div class="activity-content">
+                  <p class="activity-text">You commented on <a href="#">"Urban Flow"</a> by <a href="#">@citybeats</a></p>
+                  <p class="activity-time">3 days ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-section">
+            <div class="section-header">
+              <h2 class="section-title">Popular Beats</h2>
+              <a href="#" class="section-link">View All</a>
+            </div>
+            <div class="beats-grid">
+              <div class="beat-card">
+                <div class="beat-image-container">
+                  <img src="beat1.jpg" alt="Beat Artwork" class="beat-image">
+                  <button class="beat-play-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="beat-info">
+                  <h3 class="beat-title">Chill Afternoon</h3>
+                  <p class="beat-genre">Lo-Fi • 85 BPM</p>
+                  <div class="beat-stats">
+                    <span class="beat-stat"><i class="fas fa-play"></i> 2.4k</span>
+                    <span class="beat-stat"><i class="fas fa-heart"></i> 320</span>
+                  </div>
+                </div>
+              </div>
+              <div class="beat-card">
+                <div class="beat-image-container">
+                  <img src="beat2.jpg" alt="Beat Artwork" class="beat-image">
+                  <button class="beat-play-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="beat-info">
+                  <h3 class="beat-title">Urban Night</h3>
+                  <p class="beat-genre">Hip Hop • 95 BPM</p>
+                  <div class="beat-stats">
+                    <span class="beat-stat"><i class="fas fa-play"></i> 1.8k</span>
+                    <span class="beat-stat"><i class="fas fa-heart"></i> 245</span>
+                  </div>
+                </div>
+              </div>
+              <div class="beat-card">
+                <div class="beat-image-container">
+                  <img src="beat3.jpg" alt="Beat Artwork" class="beat-image">
+                  <button class="beat-play-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <div class="beat-info">
+                  <h3 class="beat-title">Electric Dreams</h3>
+                  <p class="beat-genre">Electronic • 128 BPM</p>
+                  <div class="beat-stats">
+                    <span class="beat-stat"><i class="fas fa-play"></i> 3.1k</span>
+                    <span class="beat-stat"><i class="fas fa-heart"></i> 412</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beats Tab -->
+        <div class="profile-tab" id="beats-tab">
+          <div class="profile-section">
+            <div class="section-header">
+              <h2 class="section-title">My Beats</h2>
+              <div class="section-actions">
+                <div class="sort-dropdown">
+                  <button class="sort-button">
+                    <i class="fas fa-sort"></i> Sort by: Recent
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                  <div class="sort-menu">
+                    <button class="sort-option active">Recent</button>
+                    <button class="sort-option">Popular</button>
+                    <button class="sort-option">Oldest</button>
+                  </div>
+                </div>
+                <button class="create-beat-btn">
+                  <i class="fas fa-plus"></i> Create Beat
+                </button>
+              </div>
+            </div>
+            <div class="beats-grid large-grid">
+              <div class="beat-card">
+                <div class="beat-image-container">
+                  <img src="beat1.jpg" alt="Beat Artwork" class="beat-image">
+                  <button class="beat-play-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                  <div class="beat-actions">
+                    <button class="beat-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="beat-info">
+                  <h3 class="beat-title">Chill Afternoon</h3>
+                  <p class="beat-genre">Lo-Fi • 85 BPM</p>
+                  <div class="beat-stats">
+                    <span class="beat-stat"><i class="fas fa-play"></i> 2.4k</span>
+                    <span class="beat-stat"><i class="fas fa-heart"></i> 320</span>
+                  </div>
+                </div>
+              </div>
+              <div class="beat-card">
+                <div class="beat-image-container">
+                  <img src="beat2.jpg" alt="Beat Artwork" class="beat-image">
+                  <button class="beat-play-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                  <div class="beat-actions">
+                    <button class="beat-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="beat-info">
+                  <h3 class="beat-title">Urban Night</h3>
+                  <p class="beat-genre">Hip Hop • 95 BPM</p>
+                  <div class="beat-stats">
+                    <span class="beat-stat"><i class="fas fa-play"></i> 1.8k</span>
+                    <span class="beat-stat"><i class="fas fa-heart"></i> 245</span>
+                  </div>
+                </div>
+              </div>
+              <div class="beat-card">
+                <div class="beat-image-container">
+                  <img src="beat3.jpg" alt="Beat Artwork" class="beat-image">
+                  <button class="beat-play-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                  <div class="beat-actions">
+                    <button class="beat-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="beat-info">
+                  <h3 class="beat-title">Electric Dreams</h3>
+                  <p class="beat-genre">Electronic • 128 BPM</p>
+                  <div class="beat-stats">
+                    <span class="beat-stat"><i class="fas fa-play"></i> 3.1k</span>
+                    <span class="beat-stat"><i class="fas fa-heart"></i> 412</span>
+                  </div>
+                </div>
+              </div>
+              <div class="beat-card">
+                <div class="beat-image-container">
+                  <img src="beat4.jpg" alt="Beat Artwork" class="beat-image">
+                  <button class="beat-play-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                  <div class="beat-actions">
+                    <button class="beat-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="beat-info">
+                  <h3 class="beat-title">Sunset Drive</h3>
+                  <p class="beat-genre">Synthwave • 110 BPM</p>
+                  <div class="beat-stats">
+                    <span class="beat-stat"><i class="fas fa-play"></i> 1.5k</span>
+                    <span class="beat-stat"><i class="fas fa-heart"></i> 189</span>
+                  </div>
+                </div>
+              </div>
+              <div class="beat-card">
+                <div class="beat-image-container">
+                  <img src="beat5.jpg" alt="Beat Artwork" class="beat-image">
+                  <button class="beat-play-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                  <div class="beat-actions">
+                    <button class="beat-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="beat-info">
+                  <h3 class="beat-title">Morning Coffee</h3>
+                  <p class="beat-genre">Jazz Hop • 90 BPM</p>
+                  <div class="beat-stats">
+                    <span class="beat-stat"><i class="fas fa-play"></i> 2.2k</span>
+                    <span class="beat-stat"><i class="fas fa-heart"></i> 276</span>
+                  </div>
+                </div>
+              </div>
+              <div class="beat-card">
+                <div class="beat-image-container">
+                  <img src="beat6.jpg" alt="Beat Artwork" class="beat-image">
+                  <button class="beat-play-btn">
+                    <i class="fas fa-play"></i>
+                  </button>
+                  <div class="beat-actions">
+                    <button class="beat-action-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button class="beat-action-btn">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="beat-info">
+                  <h3 class="beat-title">Midnight Groove</h3>
+                  <p class="beat-genre">R&B • 100 BPM</p>
+                  <div class="beat-stats">
+                    <span class="beat-stat"><i class="fas fa-play"></i> 1.9k</span>
+                    <span class="beat-stat"><i class="fas fa-heart"></i> 230</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collections Tab -->
+        <div class="profile-tab" id="collections-tab">
+          <div class="profile-section">
+            <div class="section-header">
+              <h2 class="section-title">My Collections</h2>
+              <button class="create-collection-btn">
+                <i class="fas fa-plus"></i> New Collection
+              </button>
+            </div>
+            <div class="collections-grid">
+              <div class="collection-card">
+                <div class="collection-image-container">
+                  <img src="collection1.jpg" alt="Collection Cover" class="collection-image">
+                  <div class="collection-overlay">
+                    <span class="collection-count">12 beats</span>
+                    <button class="collection-play-btn">
+                      <i class="fas fa-play"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="collection-info">
+                  <h3 class="collection-title">Lo-Fi Favorites</h3>
+                  <p class="collection-description">My favorite lo-fi beats for studying and relaxing</p>
+                </div>
+              </div>
+              <div class="collection-card">
+                <div class="collection-image-container">
+                  <img src="collection2.jpg" alt="Collection Cover" class="collection-image">
+                  <div class="collection-overlay">
+                    <span class="collection-count">8 beats</span>
+                    <button class="collection-play-btn">
+                      <i class="fas fa-play"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="collection-info">
+                  <h3 class="collection-title">Hip Hop Essentials</h3>
+                  <p class="collection-description">Classic hip hop beats with heavy bass</p>
+                </div>
+              </div>
+              <div class="collection-card">
+                <div class="collection-image-container">
+                  <img src="collection3.jpg" alt="Collection Cover" class="collection-image">
+                  <div class="collection-overlay">
+                    <span class="collection-count">15 beats</span>
+                    <button class="collection-play-btn">
+                      <i class="fas fa-play"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="collection-info">
+                  <h3 class="collection-title">Electronic Mix</h3>
+                  <p class="collection-description">High energy electronic beats for workouts</p>
+                </div>
+              </div>
+              <div class="collection-card">
+                <div class="collection-image-container">
+                  <img src="collection4.jpg" alt="Collection Cover" class="collection-image">
+                  <div class="collection-overlay">
+                    <span class="collection-count">6 beats</span>
+                    <button class="collection-play-btn">
+                      <i class="fas fa-play"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="collection-info">
+                  <h3 class="collection-title">Jazz Inspirations</h3>
+                  <p class="collection-description">Jazz-influenced beats with smooth melodies</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit Profile Tab -->
+        <div class="profile-tab" id="edit-profile-tab">
+          <div class="profile-section">
+            <h2 class="section-title">Edit Profile</h2>
+            <form class="edit-profile-form">
+              <div class="form-group">
+                <label for="display-name">Display Name</label>
+                <input type="text" id="display-name" class="form-input" value="Alex Johnson">
+              </div>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <div class="username-input-container">
+                  <span class="username-prefix">@</span>
+                  <input type="text" id="username" class="form-input username-input" value="beatmaster">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea id="bio" class="form-input form-textarea" rows="4">Music producer and beat maker based in Los Angeles. Specializing in Lo-Fi, Hip Hop, and Electronic music. Creating beats since 2018 and always looking to collaborate with talented artists.</textarea>
+                <div class="char-counter">
+                  <span id="bio-char-count">180</span>/200
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" class="form-input" value="Los Angeles, CA">
+              </div>
+              <div class="form-group">
+                <label for="website">Website</label>
+                <input type="url" id="website" class="form-input" value="https://alexjohnson.com">
+              </div>
+
+              <div class="form-divider"></div>
+              
+              <h3 class="form-section-title">Social Links</h3>
+              <div class="form-group">
+                <label for="instagram">Instagram</label>
+                <div class="social-input-container">
+                  <i class="fab fa-instagram social-icon"></i>
+                  <input type="text" id="instagram" class="form-input social-input" value="alexjohnsonbeats">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="twitter">Twitter</label>
+                <div class="social-input-container">
+                  <i class="fab fa-twitter social-icon"></i>
+                  <input type="text" id="twitter" class="form-input social-input" value="alexjohnson">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="youtube">YouTube</label>
+                <div class="social-input-container">
+                  <i class="fab fa-youtube social-icon"></i>
+                  <input type="text" id="youtube" class="form-input social-input" value="AlexJohnsonMusic">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="soundcloud">SoundCloud</label>
+                <div class="social-input-container">
+                  <i class="fab fa-soundcloud social-icon"></i>
+                  <input type="text" id="soundcloud" class="form-input social-input" value="alexjohnson">
+                </div>
+              </div>
+
+              <div class="form-divider"></div>
+              
+              <h3 class="form-section-title">Appearance</h3>
+              <div class="form-group">
+                <label>Profile Theme</label>
+                <div class="theme-options">
+                  <label class="theme-option">
+                    <input type="radio" name="theme" value="default" checked>
+                    <span class="theme-preview default-theme">
+                      <span class="theme-name">Default</span>
+                    </span>
+                  </label>
+                  <label class="theme-option">
+                    <input type="radio" name="theme" value="dark">
+                    <span class="theme-preview dark-theme">
+                      <span class="theme-name">Dark</span>
+                    </span>
+                  </label>
+                  <label class="theme-option">
+                    <input type="radio" name="theme" value="neon">
+                    <span class="theme-preview neon-theme">
+                      <span class="theme-name">Neon</span>
+                    </span>
+                  </label>
+                  <label class="theme-option">
+                    <input type="radio" name="theme" value="minimal">
+                    <span class="theme-preview minimal-theme">
+                      <span class="theme-name">Minimal</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Accent Color</label>
+                <div class="color-options">
+                  <label class="color-option">
+                    <input type="radio" name="accent-color" value="purple" checked>
+                    <span class="color-preview purple-color"></span>
+                  </label>
+                  <label class="color-option">
+                    <input type="radio" name="accent-color" value="blue">
+                    <span class="color-preview blue-color"></span>
+                  </label>
+                  <label class="color-option">
+                    <input type="radio" name="accent-color" value="green">
+                    <span class="color-preview green-color"></span>
+                  </label>
+                  <label class="color-option">
+                    <input type="radio" name="accent-color" value="orange">
+                    <span class="color-preview orange-color"></span>
+                  </label>
+                  <label class="color-option">
+                    <input type="radio" name="accent-color" value="pink">
+                    <span class="color-preview pink-color"></span>
+                  </label>
+                  <label class="color-option">
+                    <input type="radio" name="accent-color" value="custom">
+                    <span class="color-preview custom-color">
+                      <i class="fas fa-plus"></i>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Profile Layout</label>
+                <div class="layout-options">
+                  <label class="layout-option">
+                    <input type="radio" name="layout" value="standard" checked>
+                    <span class="layout-preview standard-layout">
+                      <div class="layout-icon">
+                        <i class="fas fa-th-large"></i>
+                      </div>
+                      <span class="layout-name">Standard</span>
+                    </span>
+                  </label>
+                  <label class="layout-option">
+                    <input type="radio" name="layout" value="compact">
+                    <span class="layout-preview compact-layout">
+                      <div class="layout-icon">
+                        <i class="fas fa-th"></i>
+                      </div>
+                      <span class="layout-name">Compact</span>
+                    </span>
+                  </label>
+                  <label class="layout-option">
+                    <input type="radio" name="layout" value="grid">
+                    <span class="layout-preview grid-layout">
+                      <div class="layout-icon">
+                        <i class="fas fa-grip-horizontal"></i>
+                      </div>
+                      <span class="layout-name">Grid</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-divider"></div>
+              
+              <h3 class="form-section-title">Privacy Settings</h3>
+              <div class="form-group">
+                <label class="toggle-label">
+                  <span>Profile Visibility</span>
+                  <div class="toggle-container">
+                    <span class="toggle-label-text">Private</span>
+                    <div class="toggle-switch">
+                      <input type="checkbox" id="profile-visibility" checked>
+                      <span class="toggle-slider"></span>
+                    </div>
+                    <span class="toggle-label-text">Public</span>
+                  </div>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="toggle-label">
+                  <span>Show Activity Feed</span>
+                  <div class="toggle-container">
+                    <span class="toggle-label-text">Off</span>
+                    <div class="toggle-switch">
+                      <input type="checkbox" id="activity-feed" checked>
+                      <span class="toggle-slider"></span>
+                    </div>
+                    <span class="toggle-label-text">On</span>
+                  </div>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="toggle-label">
+                  <span>Allow Comments</span>
+                  <div class="toggle-container">
+                    <span class="toggle-label-text">Off</span>
+                    <div class="toggle-switch">
+                      <input type="checkbox" id="allow-comments" checked>
+                      <span class="toggle-slider"></span>
+                    </div>
+                    <span class="toggle-label-text">On</span>
+                  </div>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="cancel-button">Cancel</button>
+                <button type="submit" class="save-button">Save Changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="../HomePage/index.html" class="nav-item">
+      <i class="fas fa-home"></i>
+    </a>
+    <a href="#" class="nav-item">
+      <i class="fas fa-search"></i>
+    </a>
+    <a href="../beatmaker/index.html" class="create-button">
+      <i class="fas fa-music"></i>
+    </a>
+    <a href="#" class="nav-item">
+      <i class="fas fa-folder"></i>
+    </a>
+    <a href="index.html" class="nav-item active">
+      <i class="fas fa-user"></i>
+    </a>
+  </nav>
+
+  <!-- Image Upload Modal -->
+  <div class="modal" id="image-upload-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Upload Image</h3>
+        <button class="modal-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="upload-area">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <p>Drag and drop your image here or</p>
+          <label for="image-upload" class="upload-button">Choose File</label>
+          <input type="file" id="image-upload" accept="image/*" hidden>
+        </div>
+        <div class="upload-preview" style="display: none;">
+          <img src="/placeholder.svg" alt="Preview" id="upload-preview-image">
+          <div class="preview-actions">
+            <button class="cancel-upload">Cancel</button>
+            <button class="crop-image">Crop</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="cancel-button modal-cancel">Cancel</button>
+        <button class="save-button modal-save">Upload</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
