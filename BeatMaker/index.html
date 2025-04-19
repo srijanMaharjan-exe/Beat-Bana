@@ -57,20 +57,97 @@
         </button>
       </div>
 
-      <!-- Main Controls -->
-      <div class="main-controls">
-        <div class="control-group">
-          <label for="tempo-slider">Tempo</label>
-          <div class="slider-container">
-            <input type="range" id="tempo-slider" min="60" max="180" value="120" class="slider">
-            <div class="slider-value">120</div>
+      <!-- Timeline Section -->
+      <div class="timeline-section">
+        <div class="timeline-header">
+          <h3>Timeline</h3>
+          <div class="timeline-actions">
+            <button id="add-track-button" class="small-button">
+              <i class="fas fa-plus"></i> Add Track
+            </button>
+            <button id="clear-all-button" class="small-button">
+              <i class="fas fa-trash"></i> Clear
+            </button>
           </div>
         </div>
-        <div class="control-group">
-          <label for="volume-slider">Volume</label>
-          <div class="slider-container">
-            <input type="range" id="volume-slider" min="0" max="100" value="80" class="slider">
-            <div class="slider-value">80</div>
+        
+        <div class="timeline-container">
+          <div class="track-labels">
+            <div class="track-label">
+              <span>Drums</span>
+              <div class="track-controls">
+                <button class="track-mute"><i class="fas fa-volume-mute"></i></button>
+                <button class="track-solo">S</button>
+              </div>
+            </div>
+            <div class="track-label">
+              <span>Bass</span>
+              <div class="track-controls">
+                <button class="track-mute"><i class="fas fa-volume-mute"></i></button>
+                <button class="track-solo">S</button>
+              </div>
+            </div>
+            <div class="track-label">
+              <span>Melody</span>
+              <div class="track-controls">
+                <button class="track-mute"><i class="fas fa-volume-mute"></i></button>
+                <button class="track-solo">S</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="timeline-grid">
+            <div class="beat-markers">
+              <div class="beat-marker">1</div>
+              <div class="beat-marker">2</div>
+              <div class="beat-marker">3</div>
+              <div class="beat-marker">4</div>
+              <div class="beat-marker">5</div>
+              <div class="beat-marker">6</div>
+              <div class="beat-marker">7</div>
+              <div class="beat-marker">8</div>
+            </div>
+            
+            <div class="timeline-tracks">
+              <div class="timeline-track" id="drums-track">
+                <div class="timeline-cells">
+                  <div class="timeline-cell" data-beat="1"></div>
+                  <div class="timeline-cell" data-beat="2"></div>
+                  <div class="timeline-cell" data-beat="3"></div>
+                  <div class="timeline-cell" data-beat="4"></div>
+                  <div class="timeline-cell" data-beat="5"></div>
+                  <div class="timeline-cell" data-beat="6"></div>
+                  <div class="timeline-cell" data-beat="7"></div>
+                  <div class="timeline-cell" data-beat="8"></div>
+                </div>
+              </div>
+              
+              <div class="timeline-track" id="bass-track">
+                <div class="timeline-cells">
+                  <div class="timeline-cell" data-beat="1"></div>
+                  <div class="timeline-cell" data-beat="2"></div>
+                  <div class="timeline-cell" data-beat="3"></div>
+                  <div class="timeline-cell" data-beat="4"></div>
+                  <div class="timeline-cell" data-beat="5"></div>
+                  <div class="timeline-cell" data-beat="6"></div>
+                  <div class="timeline-cell" data-beat="7"></div>
+                  <div class="timeline-cell" data-beat="8"></div>
+                </div>
+              </div>
+              
+              <div class="timeline-track" id="melody-track">
+                <div class="timeline-cells">
+                  <div class="timeline-cell" data-beat="1"></div>
+                  <div class="timeline-cell" data-beat="2"></div>
+                  <div class="timeline-cell" data-beat="3"></div>
+                  <div class="timeline-cell" data-beat="4"></div>
+                  <div class="timeline-cell" data-beat="5"></div>
+                  <div class="timeline-cell" data-beat="6"></div>
+                  <div class="timeline-cell" data-beat="7"></div>
+                  <div class="timeline-cell" data-beat="8"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -163,97 +240,20 @@
         </div>
       </div>
 
-      <!-- Timeline Section -->
-      <div class="timeline-section">
-        <div class="timeline-header">
-          <h3>Timeline</h3>
-          <div class="timeline-actions">
-            <button id="add-track-button" class="small-button">
-              <i class="fas fa-plus"></i> Add Track
-            </button>
-            <button id="clear-all-button" class="small-button">
-              <i class="fas fa-trash"></i> Clear
-            </button>
+      <!-- Main Controls -->
+      <div class="main-controls">
+        <div class="control-group">
+          <label for="tempo-slider">Tempo</label>
+          <div class="slider-container">
+            <input type="range" id="tempo-slider" min="60" max="180" value="120" class="slider">
+            <div class="slider-value">120</div>
           </div>
         </div>
-        
-        <div class="timeline-container">
-          <div class="track-labels">
-            <div class="track-label">
-              <span>Drums</span>
-              <div class="track-controls">
-                <button class="track-mute"><i class="fas fa-volume-mute"></i></button>
-                <button class="track-solo">S</button>
-              </div>
-            </div>
-            <div class="track-label">
-              <span>Bass</span>
-              <div class="track-controls">
-                <button class="track-mute"><i class="fas fa-volume-mute"></i></button>
-                <button class="track-solo">S</button>
-              </div>
-            </div>
-            <div class="track-label">
-              <span>Melody</span>
-              <div class="track-controls">
-                <button class="track-mute"><i class="fas fa-volume-mute"></i></button>
-                <button class="track-solo">S</button>
-              </div>
-            </div>
-          </div>
-          
-          <div class="timeline-grid">
-            <div class="beat-markers">
-              <div class="beat-marker">1</div>
-              <div class="beat-marker">2</div>
-              <div class="beat-marker">3</div>
-              <div class="beat-marker">4</div>
-              <div class="beat-marker">5</div>
-              <div class="beat-marker">6</div>
-              <div class="beat-marker">7</div>
-              <div class="beat-marker">8</div>
-            </div>
-            
-            <div class="timeline-tracks">
-              <div class="timeline-track" id="drums-track">
-                <div class="timeline-cells">
-                  <div class="timeline-cell" data-beat="1"></div>
-                  <div class="timeline-cell" data-beat="2"></div>
-                  <div class="timeline-cell" data-beat="3"></div>
-                  <div class="timeline-cell" data-beat="4"></div>
-                  <div class="timeline-cell" data-beat="5"></div>
-                  <div class="timeline-cell" data-beat="6"></div>
-                  <div class="timeline-cell" data-beat="7"></div>
-                  <div class="timeline-cell" data-beat="8"></div>
-                </div>
-              </div>
-              
-              <div class="timeline-track" id="bass-track">
-                <div class="timeline-cells">
-                  <div class="timeline-cell" data-beat="1"></div>
-                  <div class="timeline-cell" data-beat="2"></div>
-                  <div class="timeline-cell" data-beat="3"></div>
-                  <div class="timeline-cell" data-beat="4"></div>
-                  <div class="timeline-cell" data-beat="5"></div>
-                  <div class="timeline-cell" data-beat="6"></div>
-                  <div class="timeline-cell" data-beat="7"></div>
-                  <div class="timeline-cell" data-beat="8"></div>
-                </div>
-              </div>
-              
-              <div class="timeline-track" id="melody-track">
-                <div class="timeline-cells">
-                  <div class="timeline-cell" data-beat="1"></div>
-                  <div class="timeline-cell" data-beat="2"></div>
-                  <div class="timeline-cell" data-beat="3"></div>
-                  <div class="timeline-cell" data-beat="4"></div>
-                  <div class="timeline-cell" data-beat="5"></div>
-                  <div class="timeline-cell" data-beat="6"></div>
-                  <div class="timeline-cell" data-beat="7"></div>
-                  <div class="timeline-cell" data-beat="8"></div>
-                </div>
-              </div>
-            </div>
+        <div class="control-group">
+          <label for="volume-slider">Volume</label>
+          <div class="slider-container">
+            <input type="range" id="volume-slider" min="0" max="100" value="80" class="slider">
+            <div class="slider-value">80</div>
           </div>
         </div>
       </div>
