@@ -1,0 +1,1 @@
+Design and develop a sample application called BeatBana. The app should be a user-friendly beat-making platform where users, especially beginners, can create their own music using pre-designed templates and an intuitive drag-and-drop interface. 
